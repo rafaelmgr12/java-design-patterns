@@ -1,7 +1,8 @@
 import org.testng.annotations.Test;
 import store.budget.Budget;
 import store.tax.ComputeTax;
-import store.tax.Taxes;
+import store.tax.ICMS;
+import store.tax.ISS;
 
 import java.math.BigDecimal;
 
@@ -13,7 +14,7 @@ public class TestTaxes {
 
         Budget budget = new Budget(new BigDecimal("100"));
         ComputeTax computeTax = new ComputeTax();
-        BigDecimal result = computeTax.computeTax(budget, Taxes.ICMS);
+        BigDecimal result = computeTax.computeTax(budget, new ICMS());
         assertEquals(new BigDecimal("10.0"), result);
     }
     @Test
@@ -21,7 +22,7 @@ public class TestTaxes {
 
         Budget budget = new Budget(new BigDecimal("100"));
         ComputeTax computeTax = new ComputeTax();
-        BigDecimal result = computeTax.computeTax(budget, Taxes.ISS);
+        BigDecimal result = computeTax.computeTax(budget, new ISS());
         assertEquals(new BigDecimal("6.00"), result);
     }
 }
