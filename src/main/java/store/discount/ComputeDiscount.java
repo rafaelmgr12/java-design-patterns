@@ -10,6 +10,6 @@ public class ComputeDiscount {
           new NoDiscount(null)
         )
       );
-        return discount.compute(budget);
+        return discount.makeCompute(budget);
     }
 }
