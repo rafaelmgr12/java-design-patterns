@@ -1,12 +1,8 @@
 package store.order;
 
-import store.budget.Budget;
-import store.order.action.SaveOrderrInDB;
-import store.order.action.SendOrderEmail;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDateTime;
+
 
 public class GenerateOrder {
 
@@ -20,18 +16,15 @@ public class GenerateOrder {
         this.quantityItems = quantityItems;
     }
 
-    public void execute(){
-        Budget budget = new Budget(this.budgetValue, this.quantityItems);
-        LocalDateTime date = LocalDateTime.now();
+    public String getClient() {
+        return client;
+    }
 
-        Order order = new Order(this.client, date, budget);
+    public BigDecimal getBudgetValue() {
+        return budgetValue;
+    }
 
-        SendOrderEmail sendOrderEmail = new SendOrderEmail();
-        sendOrderEmail.execute(order);
-        SaveOrderrInDB saveOrderrInDB = new SaveOrderrInDB();
-        saveOrderrInDB.execute(order);
-
-
-
+    public int getQuantityItems() {
+        return quantityItems;
     }
 }
