@@ -1,6 +1,8 @@
 package store.order;
 
 import store.budget.Budget;
+import store.order.action.SaveOrderrInDB;
+import store.order.action.SendOrderEmail;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -24,9 +26,11 @@ public class GenerateOrder {
 
         Order order = new Order(this.client, date, budget);
 
-        System.out.println("Salvando pedio no banco de dados");
-        System.out.println(order);
-        System.out.println("Enviando e-mail com dados do novo pedido");
+        SendOrderEmail sendOrderEmail = new SendOrderEmail();
+        sendOrderEmail.execute(order);
+        SaveOrderrInDB saveOrderrInDB = new SaveOrderrInDB();
+        saveOrderrInDB.execute(order);
+
 
 
     }
