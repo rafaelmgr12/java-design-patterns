@@ -1,16 +1,20 @@
 package store.order;
 
 import store.budget.Budget;
+import store.order.action.ActionToGenerateOrder;
 import store.order.action.SaveOrderrInDB;
 import store.order.action.SendOrderEmail;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class GenerateOrderHandler {
 
-    public GenerateOrderHandler() {
-        // TODO document why this constructor is empty
+    private List<ActionToGenerateOrder> actions;
+
+    public GenerateOrderHandler(List<ActionToGenerateOrder> actions) {
+        this.actions = actions;
     }
 
     public void execute(GenerateOrder generateOrder){
@@ -19,9 +23,6 @@ public class GenerateOrderHandler {
 
         Order order = new Order(generateOrder.getClient(), date, budget);
 
-        SendOrderEmail sendOrderEmail = new SendOrderEmail();
-        sendOrderEmail.execute(order);
-        SaveOrderrInDB saveOrderrInDB = new SaveOrderrInDB();
-        saveOrderrInDB.execute(order);
+        actions.forEach(a -> a.execute(order));
     }
 }
