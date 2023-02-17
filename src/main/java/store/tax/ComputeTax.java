@@ -7,6 +7,6 @@ import java.math.BigDecimal;
 public class ComputeTax {
 
     public BigDecimal computeTax(Budget bugdet, Taxes taxes) {
-        return taxes.computeTax(bugdet);
+        return taxes.doComputeTax(bugdet);
     }
 }
