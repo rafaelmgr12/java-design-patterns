@@ -1,6 +1,6 @@
 package store;
 
-import http.HttpAdapter;
+import store.http.HttpAdapter;
 import store.budget.Budget;
 
 import java.util.Map;

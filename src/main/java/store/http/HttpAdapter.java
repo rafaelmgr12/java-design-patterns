@@ -1,4 +1,4 @@
-package http;
+package store.http;
 
 import java.util.Map;
 

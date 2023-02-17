@@ -1,9 +1,7 @@
-package http;
+package store.http;
 
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.http.HttpClient;
 import java.util.Map;
 
 public class JavaHttpClient implements HttpAdapter {
